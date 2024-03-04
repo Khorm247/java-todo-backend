@@ -1,6 +1,6 @@
 import './App.css'
 import axios from "axios";
-import {useEffect, useState} from "react";
+import {FormEvent, useEffect, useState} from "react";
 import Header from "./components/Header.tsx";
 import Footer from "./components/Footer.tsx";
 import {Route, Routes} from "react-router-dom";
@@ -13,9 +13,7 @@ export default function App() {
     const [todoListData, setTodoListData] = useState<TodoItem[]>([]);
 
     useEffect(
-        //WAS soll er machen?
         fetchData
-        //WANN soll er es machen?
         ,[])
 
     function fetchData(){
@@ -24,11 +22,32 @@ export default function App() {
             .catch((error) => console.log(error.message))
     }
 
-    console.log("fetchData\n" + todoListData)
+    function handleTodoSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        const todoInput = document.getElementById("todo-input") as HTMLInputElement;
+        const todoDescription = todoInput.value;
+
+        if (todoDescription) {
+            axios.post('/api/todo', {
+                description: todoDescription
+            })
+                .then((response) => {
+                    setTodoListData([...todoListData, response.data])
+                    todoInput.value = "";
+                })
+                .catch((error) => console.log(error.message))
+        }
+    }
 
     return (
         <>
             <Header/>
+            <div className={"form-container"}>
+                <form id="todo-form">
+                    <input type="text" id="todo-input" placeholder="Neue Aufgabe hinzufügen"/>
+                    <button onClick={() => handleTodoSubmit} type="submit">Hinzufügen</button>
+                </form>
+            </div>
 
             <Routes>
                 <Route path="/" element={<TodoContainer todos={todoListData}/>}/>
