@@ -4,6 +4,14 @@
     padding: 20px;
     margin: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #5609d0;
+    width: 20%;
+}
+
+.card hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 10px 0;
 }
 
 .card ul {

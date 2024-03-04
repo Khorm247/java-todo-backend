@@ -1,13 +1,23 @@
-export default function TodoCard() {
-    // diese Komponente soll später die Daten aus der Datenbank anzeigen
-    // dafür benötigen wir eine Möglichkeit, die Daten zu empfangen
-    // und anzuzeigen
+import { Link } from "react-router-dom";
+import {TodoItem} from "../TodoItem.tsx";
+import "./TodoCard.css";
 
+type TodoCardProps = {
+    todoCard: TodoItem
+}
 
+export default function TodoCard(props: Readonly<TodoCardProps>) {
 
     return (
-        <div>
-            <h1>TodoCard</h1>
-        </div>
+        <>
+            <Link to={`/characters/${props.todoCard.id}`}>
+                <div className={"card"}>
+                    <h3>{props.todoCard.id}</h3>
+                    <h3>{props.todoCard.description}</h3>
+                    <hr/>
+                    <h3>{props.todoCard.status}</h3>
+                </div>
+            </Link>
+        </>
     )
 }

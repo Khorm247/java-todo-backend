@@ -1,7 +1,5 @@
-export type Character = {
-    id: number
-    name: string
+export type TodoItem = {
+    id: string
+    description: string
     status: string
-    species: string
-    type: string
 }

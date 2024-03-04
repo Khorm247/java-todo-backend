@@ -13,7 +13,9 @@ class TodoRepository {
             Map.of(
                     "1", new Todo("1", "Test1", TodoStatus.OPEN),
                     "2", new Todo("2", "Test2", TodoStatus.OPEN),
-                    "3", new Todo("3", "Test3", TodoStatus.OPEN)
+                    "3", new Todo("3", "Test3", TodoStatus.OPEN),
+                    "4", new Todo("4", "Test4", TodoStatus.IN_PROGRESS),
+                    "5", new Todo("5", "Test5", TodoStatus.DONE)
             )
     );
 

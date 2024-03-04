@@ -6,6 +6,7 @@ export default function NavBar() {
         <ul>
             <li><Link to={"/"}>Alle</Link></li>
             <li><Link to={"/open"}>Offen</Link></li>
+            <li><Link to={"/in_progress"}/></li>
             <li><Link to={"/done"}>Erledigt</Link></li>
         </ul>
     </nav>
