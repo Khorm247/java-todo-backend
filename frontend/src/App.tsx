@@ -1,6 +1,9 @@
 import './App.css'
 import axios from "axios";
 import {useEffect, useState} from "react";
+import Header from "./components/Header.tsx";
+import Footer from "./components/Footer.tsx";
+import {Route, Routes} from "react-router-dom";
 
 type ApiResponse = {
     id: string,
@@ -10,15 +13,13 @@ type ApiResponse = {
 
 export default function App() {
 
-    const [id, setId] = useState<number>(1)
-
     const [exampleData, setExampleData] = useState<ApiResponse[]>([]);
 
     useEffect(
         //WAS soll er machen?
         fetchData
         //WANN soll er es machen?
-        ,[id])
+        ,[])
 
     function fetchData(){
         //axios ermöglicht alle gängigen http-requests (get, post, put, delete)
@@ -32,19 +33,33 @@ export default function App() {
 
       return (
           <>
-              <h1>App</h1>
-              <button onClick={() => setId(id + 1)}>Click me</button>
-              <p></p>
+              <Header/>
+              <Routes>
+                  <Route path="/" element={<h1>Alle</h1>}/>
+                  <Route path="/open" element={<h1>Offen</h1>}/>
+                  <Route path="/done" element={<h1>Erledigt</h1>}/>
+              </Routes>
 
-              <ul>
-                  {exampleData.map((item) => (
-                      <li key={item.id}>
-                          <p>{item.id}</p>
-                          <p>{item.description}</p>
-                            <p>{item.status}</p>
-                      </li>
-                  ))}
-              </ul>
+              <main>
+                  <form id="todo-form">
+                      <input type="text" id="todo-input" placeholder="Neue Aufgabe hinzufügen"/>
+                      <button type="submit">Hinzufügen</button>
+                  </form>
+                  
+                  <ul id="todo-list">
+                      <ul>
+                          {exampleData.map((item) => (
+                              <li key={item.id}>
+                                  {item.id}
+                                  <b>{item.description}</b>
+                                    {item.status}
+                              </li>
+                          ))}
+                      </ul>
+                  </ul>
+              </main>
+
+              <Footer/>
           </>
       )
 }
