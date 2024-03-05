@@ -1,12 +1,12 @@
 import './App.css'
 import axios from "axios";
-import {FormEvent, useEffect, useState} from "react";
 import Header from "./components/Header.tsx";
 import Footer from "./components/Footer.tsx";
 import {Route, Routes} from "react-router-dom";
 import {TodoItem} from "./components/TodoItem.tsx";
 import TodoDetails from "./components/TodoDetails/TodoDetails.tsx";
 import TodoContainer from "./components/TodoContainer.tsx";
+import {useEffect, useState} from "react";
 
 export default function App() {
 
@@ -22,12 +22,13 @@ export default function App() {
             .catch((error) => console.log(error.message))
     }
 
-    function handleTodoSubmit(event: FormEvent<HTMLFormElement>) {
+    function handleTodoSubmit(event: React.MouseEvent<HTMLButtonElement>) {
         event.preventDefault();
         const todoInput = document.getElementById("todo-input") as HTMLInputElement;
         const todoDescription = todoInput.value;
 
         if (todoDescription) {
+            console.log(todoListData)
             axios.post('/api/todo', {
                 id: null,
                 description: todoDescription,
@@ -48,7 +49,7 @@ export default function App() {
             <div className={"form-container"}>
                 <form id="todo-form">
                     <input type="text" id="todo-input" placeholder="Neue Aufgabe hinzufügen"/>
-                    <button onClick={() => handleTodoSubmit}>Hinzufügen</button>
+                    <button onClick={(event) => handleTodoSubmit(event)}>Hinzufügen</button>
                 </form>
             </div>
 

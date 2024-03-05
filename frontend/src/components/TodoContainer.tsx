@@ -18,11 +18,9 @@ export default function TodoContainer(props: Readonly<TodoContainerProps>) {
                 <main>
                     <h1>All Todos</h1>
                     <ul id="todo-list">
-                        <li>
-                            {props.todos.map((item) => (
-                                <TodoCard key={item.id} todoCard={item}/>
-                            ))}
-                        </li>
+                        {props.todos.map((item) => (
+                            <TodoCard key={item.id} todoCard={item}/>
+                        ))}
                     </ul>
                 </main>
             </div>

@@ -12,7 +12,6 @@ export default function TodoCard(props: Readonly<TodoCardProps>) {
         <>
             <Link to={`/characters/${props.todoCard.id}`}>
                 <div className={"card"}>
-                    <h3>{props.todoCard.id}</h3>
                     <h3>{props.todoCard.description}</h3>
                     <hr/>
                     <h3>{props.todoCard.status}</h3>
