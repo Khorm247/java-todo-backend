@@ -20,7 +20,7 @@ export default function TodoContainer(props: Readonly<TodoContainerProps>) {
                     <ul id="todo-list">
                         <li>
                             {props.todos.map((item) => (
-                                <TodoCard todoCard={item}/>
+                                <TodoCard key={item.id} todoCard={item}/>
                             ))}
                         </li>
                     </ul>
@@ -35,7 +35,7 @@ export default function TodoContainer(props: Readonly<TodoContainerProps>) {
                 <h1>{params.status}</h1>
                 <ul id="todo-list">
                     {todosToShow.map((item) => (
-                        <TodoCard todoCard={item}/>
+                        <TodoCard key={item.id}  todoCard={item}/>
                     ))}
                 </ul>
             </main>

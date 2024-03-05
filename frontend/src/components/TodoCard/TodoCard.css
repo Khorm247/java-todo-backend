@@ -4,8 +4,8 @@
     padding: 20px;
     margin: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: #5609d0;
-    width: 20%;
+    background-color: #8a4bfa;
+    width: 8rem;
 }
 
 .card hr {
@@ -27,4 +27,9 @@
 
 .card li:last-child {
     border-bottom: none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
 }

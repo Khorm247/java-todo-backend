@@ -29,13 +29,16 @@ export default function App() {
 
         if (todoDescription) {
             axios.post('/api/todo', {
-                description: todoDescription
+                id: null,
+                description: todoDescription,
+                status: "OPEN"
             })
                 .then((response) => {
                     setTodoListData([...todoListData, response.data])
                     todoInput.value = "";
                 })
                 .catch((error) => console.log(error.message))
+            console.log(todoListData)
         }
     }
 
@@ -45,7 +48,7 @@ export default function App() {
             <div className={"form-container"}>
                 <form id="todo-form">
                     <input type="text" id="todo-input" placeholder="Neue Aufgabe hinzufügen"/>
-                    <button onClick={() => handleTodoSubmit} type="submit">Hinzufügen</button>
+                    <button onClick={() => handleTodoSubmit}>Hinzufügen</button>
                 </form>
             </div>
 

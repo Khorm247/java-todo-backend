@@ -25,6 +25,8 @@ main {
 .form-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 #todo-input {
@@ -60,7 +62,7 @@ main {
     margin-bottom: 10px;
     padding: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
